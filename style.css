@@ -1,0 +1,16 @@
+header {
+    font-size: 30px;
+    text-align: center;
+}
+h2 {
+    text-align: right;
+}
+input {
+    margin: 5px;
+}
+
+#submitButton {
+}
+td {
+    margin: 3px; 
+}
