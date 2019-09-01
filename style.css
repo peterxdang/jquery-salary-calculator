@@ -14,3 +14,14 @@ input {
 td {
     margin: 3px; 
 }
+
+.error {
+    border: 3px solid;
+    color: red;
+    font: 3px;
+    padding: 3px;
+}
+.outside {
+    border: 5px solid;
+    color: black;
+}

@@ -10,40 +10,42 @@
     <title>Document</title>
 </head>
 <body>
-    <header>Salary Calculator</header>
-    <h1></h1>
-    <p>Add Employees</p>
-    <input id = "inputFirstName" placeholder="First Name" type="text"/>
-    <input id = "inputLastName" placeholder="Last Name"  type="text"/>
-    <input id = "inputId" placeholder="ID" type="text"/>
-    <input id = "inputTitle" placeholder="Title" type="text"/>
-    <input id = "inputAnnualSalary" placeholder="Annual Salary" type="text"/>
-    <br>
-    <button id="submitButton">Submit</button>
-    <table>
-        <thead>
-            <p>Employees</p>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Annual Salary</th>
-                <th>Delete button</th>
-            </tr>
-        </thead>
-        <tbody id = "addNewEmployee2">
-            <tr id = "addNewEmployee">
-                <td id = "firstName">Cheese</td>
-                <td id = "lastName">$12.99</td>
-                <td id = "id">$14.99</td>
-                <td id = "title">$16.99</td>
-                <td id = "annualSalary">$18.99</td>
-                <td id = "deleteOption"></td>
-            </tr>
-        </tbody>
-    </table>
-    <h2 id = "monthlySalary">Total Monthly: </h2>
+    <div class = "outside">
+        <header>Salary Calculator</header>
+        <h1></h1>
+        <p>Add Employee</p>
+        <input id = "inputFirstName" placeholder="First Name" type="text"/>
+        <input id = "inputLastName" placeholder="Last Name"  type="text"/>
+        <input id = "inputId" placeholder="ID" type="text"/>
+        <input id = "inputTitle" placeholder="Title" type="text"/>
+        <input id = "inputAnnualSalary" placeholder="Annual Salary" type="text"/>
+        <br>
+        <button id="submitButton">Submit</button>
+        <table>
+            <thead>
+                <p>Employees</p>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Annual Salary</th>
+                    <th>Delete button</th>
+                </tr>
+            </thead>
+            <tbody id = "addNewEmployee2">
+                <tr id = "addNewEmployee">
+                    <td id = "firstName">Cheese</td>
+                    <td id = "lastName">$12.99</td>
+                    <td id = "id">$14.99</td>
+                    <td id = "title">$16.99</td>
+                    <td id = "annualSalary">$18.99</td>
+                    <td id = "deleteOption"></td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 id = "monthlySalary">Total Monthly: <span id = "totalMonthly">0</span> </h2>
+    </div>
     <footer></footer>
 </body>
 </html>
