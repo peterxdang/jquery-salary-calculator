@@ -1,16 +1,24 @@
 console.log('JS is running');
 
 const salaryArray = [];
+let companySalaryCap = 20000;
 
 $(document).ready(readyNow);
 
 function readyNow () {
     console.log('jQuery is ready');
+    addEmployee();
     $("#submitButton").on('click', addInput);
-
-
-
 }
+
+function addEmployee () {
+    $("#deleteFeature").on( 'click', functionDelete);
+
+    function functionDelete () {
+        $(`#newEntry`).remove();
+    }
+}
+
 
 function addInput () {
     let newFirstName = $("#inputFirstName").val();
@@ -31,36 +39,49 @@ function addInput () {
     }
 
     console.log(salaryArray);
-    $("#addNewEmployee2").append (
-        `<tr id = "newEntry"> 
-        <td>${newFirstName}</td>,
-        <td>${newLastName}</td>,
-        <td>${newID}</td>,
-        <td>${newTitle}</td>,
-        <td id = "employeeSalary">${newAnnualSalary}</td>
-        <td><button id = "deleteFeature">delete</button></td>
-        </tr>`
-    );
-    $("#deleteFeature").on('click', functionDelete );
+    
+     $("#addNewEmployee").append (
+         `<tr id = "newEntry"> 
+         <td>${newFirstName}</td>,
+         <td>${newLastName}</td>,
+         <td>${newID}</td>,
+         <td>${newTitle}</td>,
+         <td id = "employeeSalary">${newAnnualSalary}</td>
+         <td><button id = "deleteFeature">delete</button></td>
+         </tr>`
+     );
+     addEmployee();
+    //  $("#deleteFeature").on( 'click', functionDelete);
 
-    function functionDelete () {
-        $("#newEntry").remove();
-    }
+    //  function functionDelete () {
+    //      $(this).parent().parent().remove();
+    //  }
+    
     $("#totalMonthly").empty();
-    $("#totalMonthly").append(`<span>${addIt(salaryArray)}</span>`);
+    $("#totalMonthly").append(`<span>${totalMonth(salaryArray)}</span>`);
     
 
 }
 
-
-//[3,2,3,4]; 
-function addIt (here) {
+function totalMonth (here) {
     let sum = 0;
     for (let i=0; i<here.length; i++) {
         sum = sum + here[i]
     }
-    if (sum >20000 ) {
+    if (sum > (companySalaryCap * 12) ) {
         $("#totalMonthly").addClass(`error`);
     }
-    return sum;
+    return (sum / 12);
 }; 
+
+//deleting new tr created using append
+// 1. creating button deleting the section tr
+// 2. assigning the tr individual id 
+// 3. applying button to specific tr's
+
+//getting the delete function to work:
+//1. two click events happening in one function: 
+//2. move the appending the table w/ button to another function
+//3. rename other function, put it in the readyNow
+//
+//

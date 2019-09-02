@@ -1,27 +1,40 @@
 header {
-    font-size: 30px;
+    font-size: 50px;
     text-align: center;
+    background-color:lightslategrey;
+    Padding: 22px
 }
 h2 {
     text-align: right;
+    font-size: 28px;
+}
+p {
+    font-size: 22px;
 }
 input {
     margin: 5px;
+    margin-bottom: 7px;
+
+}
+table{
+    border: 1px solid black;
+    margin: auto;
+    border-collapse:collapse;
+
+}
+th, td {
+    margin: 3px;
+    padding: 11px;
 }
 
-#submitButton {
-}
-td {
-    margin: 3px; 
-}
 
 .error {
-    border: 3px solid;
-    color: red;
-    font: 3px;
+    background-color: red;
     padding: 3px;
 }
 .outside {
     border: 5px solid;
     color: black;
+    padding: 20px;
+
 }
