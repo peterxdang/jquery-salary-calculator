@@ -9,13 +9,13 @@ function readyNow () {
     console.log('jQuery is ready');
     addEmployee();
     $("#submitButton").on('click', addInput);
+    buttonHover();
 }
 
 function addEmployee () {
-    $("#deleteFeature").on( 'click', functionDelete);
-
+    $(".deleteFeature").on( 'click', functionDelete);
     function functionDelete () {
-        $(`#newEntry`).remove();
+        $(this).parent().parent().remove();
     }
 }
 
@@ -28,15 +28,30 @@ function addInput () {
     let newAnnualSalary = $("#inputAnnualSalary").val();
     let newAnnSalaryNum = Number(newAnnualSalary);
 
+    $("#inputAnnualSalary").removeClass('redBorder');
+    $("#inputFirstName").removeClass('redBorder');
+    $("#inputLastName").removeClass('redBorder');
     $("totalMonthly").removeClass('error');
-    if (newAnnSalaryNum !== Number(newAnnSalaryNum)) {
+
+    if (newAnnSalaryNum !== Number(newAnnSalaryNum || !newAnnSalaryNum)) {
         alert("Enter your Annual Salary as a number: no commas ( , )");
-        $("#inputAnnualSalary").val('');
+        $("#inputAnnualSalary").addClass('redBorder');
         return;
     }
     else {
         salaryArray.push(Number(newAnnualSalary));
+        $("#inputAnnualSalary").val('');
     }
+
+    if (!newFirstName || !newLastName) {
+        alert("Please enter your First and Last name");
+        $("#inputFirstName").addClass('redBorder');
+        $("#inputLastName").addClass('redBorder');
+    }
+    else {
+        $("#inputAnnualSalary").val('')
+    }
+
 
     console.log(salaryArray);
     
@@ -46,17 +61,12 @@ function addInput () {
          <td>${newLastName}</td>,
          <td>${newID}</td>,
          <td>${newTitle}</td>,
-         <td id = "employeeSalary">${newAnnualSalary}</td>
-         <td><button id = "deleteFeature">delete</button></td>
+         <td id = "employeeSalary">$${newAnnualSalary}</td>
+         <td><button class = "deleteFeature">delete</button></td>
          </tr>`
      );
      addEmployee();
-    //  $("#deleteFeature").on( 'click', functionDelete);
-
-    //  function functionDelete () {
-    //      $(this).parent().parent().remove();
-    //  }
-    
+    deletebtnHover();
     $("#totalMonthly").empty();
     $("#totalMonthly").append(`<span>${totalMonth(salaryArray)}</span>`);
     
@@ -74,6 +84,29 @@ function totalMonth (here) {
     return (sum / 12);
 }; 
 
+function buttonHover () {
+    $("#submitButton").mouseenter(hoverColor);
+    function hoverColor () {
+        $("#submitButton").addClass('buttonHover');
+    }
+    $("#submitButton").mouseleave(hoverBack);
+    function hoverBack () {
+        $("#submitButton").removeClass('buttonHover');
+    }
+}
+
+function deletebtnHover () {
+    $(".deleteFeature").mouseenter(hoverDelete);
+    function hoverDelete() {
+        $(".deleteFeature").addClass('buttonHover');
+    }
+    $(".deleteFeature").mouseleave(hoverBackClr);
+    function hoverBackClr() {
+        $(".deleteFeature").removeClass('buttonHover');
+    };
+}
+
+//PROGRAMMER NOTES
 //deleting new tr created using append
 // 1. creating button deleting the section tr
 // 2. assigning the tr individual id 
@@ -83,5 +116,12 @@ function totalMonth (here) {
 //1. two click events happening in one function: 
 //2. move the appending the table w/ button to another function
 //3. rename other function, put it in the readyNow
-//
-//
+
+//changing the button id to class, i was able to delete the button
+//maybe changing it to class, we're able to use .on?
+    //changing button to class --->delete a single button any row when $(this).parent().remove
+//when button id = "", we're able to delete one row.
+
+//delete button hover feature didnt't work;
+//1. after creating function and put it in readyNow, the hover feature function needs to be
+//-called in the same function as .append, since the delete button will be generated there
