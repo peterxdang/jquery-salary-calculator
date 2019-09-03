@@ -47,6 +47,7 @@ function addInput () {
         alert("Please enter your First and Last name");
         $("#inputFirstName").addClass('redBorder');
         $("#inputLastName").addClass('redBorder');
+        return;
     }
     else {
         $("#inputAnnualSalary").val('')
