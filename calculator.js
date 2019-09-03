@@ -40,7 +40,6 @@ function addInput () {
     }
     else {
         salaryArray.push(Number(newAnnualSalary));
-        $("#inputAnnualSalary").val('');
     }
 
     if (!newFirstName || !newLastName) {
@@ -50,7 +49,11 @@ function addInput () {
         return;
     }
     else {
-        $("#inputAnnualSalary").val('')
+        $("#inputFirstName").val('');
+        $("#inputLastName").val('');
+        $("#inputId").val('');
+        $("#inputTitle").val('');
+        $("#inputAnnualSalary").val('');
     }
 
 
